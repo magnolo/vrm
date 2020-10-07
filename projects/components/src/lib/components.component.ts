@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   OnInit,
@@ -72,7 +73,7 @@ export class ComponentsComponent implements OnInit, AfterViewInit {
   @ViewChildren('steps') steps: QueryList<ElementRef>;
   title = 'vrm';
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
 
@@ -146,5 +147,7 @@ export class ComponentsComponent implements OnInit, AfterViewInit {
       'fill',
       this.content[this.activeIdx].backgroundColor
     );
+
+    this.cdr.markForCheck();
   }
 }
