@@ -3,9 +3,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input,
   OnInit,
   QueryList,
   Renderer2,
+  SimpleChanges,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -18,6 +20,8 @@ import { Flip } from 'number-flip';
   styleUrls: ['./components.component.scss'],
 })
 export class ComponentsComponent implements OnInit, AfterViewInit {
+  @Input() values: number[];
+
   public content = [
     {
       title: 'Design, Tierstudien',
@@ -76,6 +80,14 @@ export class ComponentsComponent implements OnInit, AfterViewInit {
   constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.values) {
+      this.values.forEach((value, idx) => {
+        this.content[idx].value = value;
+      });
+    }
+  }
 
   ngAfterViewInit(): void {
     this.flipper = new Flip({
@@ -148,6 +160,6 @@ export class ComponentsComponent implements OnInit, AfterViewInit {
       this.content[this.activeIdx].backgroundColor
     );
 
-    this.cdr.markForCheck();
+    this.cdr.detectChanges();
   }
 }

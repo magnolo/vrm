@@ -285,6 +285,14 @@
             this.title = 'vrm';
         }
         ComponentsComponent.prototype.ngOnInit = function () { };
+        ComponentsComponent.prototype.ngOnChanges = function (changes) {
+            var _this = this;
+            if (this.values) {
+                this.values.forEach(function (value, idx) {
+                    _this.content[idx].value = value;
+                });
+            }
+        };
         ComponentsComponent.prototype.ngAfterViewInit = function () {
             this.flipper = new numberFlip.Flip({
                 node: this.number.nativeElement,
@@ -316,12 +324,15 @@
             this.renderer.setStyle(this.recruitmentText.nativeElement, 'height', height + 'px');
             this.renderer.setStyle(this.recruitmentText.nativeElement, 'background-color', this.content[this.activeIdx].backgroundColor);
             this.renderer.setStyle(this.arrow.nativeElement, 'fill', this.content[this.activeIdx].backgroundColor);
-            this.cdr.markForCheck();
+            this.cdr.detectChanges();
         };
         ComponentsComponent.ctorParameters = function () { return [
             { type: core.Renderer2 },
             { type: core.ChangeDetectorRef }
         ]; };
+        __decorate([
+            core.Input()
+        ], ComponentsComponent.prototype, "values", void 0);
         __decorate([
             core.ViewChild('ringBg')
         ], ComponentsComponent.prototype, "ringBg", void 0);

@@ -1,5 +1,5 @@
 import { __decorate } from 'tslib';
-import { ɵɵdefineInjectable, Injectable, Renderer2, ChangeDetectorRef, ViewChild, ViewChildren, Component, NgModule } from '@angular/core';
+import { ɵɵdefineInjectable, Injectable, Renderer2, ChangeDetectorRef, Input, ViewChild, ViewChildren, Component, NgModule } from '@angular/core';
 import { Flip } from 'number-flip';
 import { CommonModule } from '@angular/common';
 
@@ -65,6 +65,14 @@ var ComponentsComponent = /** @class */ (function () {
         this.title = 'vrm';
     }
     ComponentsComponent.prototype.ngOnInit = function () { };
+    ComponentsComponent.prototype.ngOnChanges = function (changes) {
+        var _this = this;
+        if (this.values) {
+            this.values.forEach(function (value, idx) {
+                _this.content[idx].value = value;
+            });
+        }
+    };
     ComponentsComponent.prototype.ngAfterViewInit = function () {
         this.flipper = new Flip({
             node: this.number.nativeElement,
@@ -96,12 +104,15 @@ var ComponentsComponent = /** @class */ (function () {
         this.renderer.setStyle(this.recruitmentText.nativeElement, 'height', height + 'px');
         this.renderer.setStyle(this.recruitmentText.nativeElement, 'background-color', this.content[this.activeIdx].backgroundColor);
         this.renderer.setStyle(this.arrow.nativeElement, 'fill', this.content[this.activeIdx].backgroundColor);
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
     };
     ComponentsComponent.ctorParameters = function () { return [
         { type: Renderer2 },
         { type: ChangeDetectorRef }
     ]; };
+    __decorate([
+        Input()
+    ], ComponentsComponent.prototype, "values", void 0);
     __decorate([
         ViewChild('ringBg')
     ], ComponentsComponent.prototype, "ringBg", void 0);

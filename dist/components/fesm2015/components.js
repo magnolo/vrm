@@ -1,5 +1,5 @@
 import { __decorate } from 'tslib';
-import { ɵɵdefineInjectable, Injectable, Renderer2, ChangeDetectorRef, ViewChild, ViewChildren, Component, NgModule } from '@angular/core';
+import { ɵɵdefineInjectable, Injectable, Renderer2, ChangeDetectorRef, Input, ViewChild, ViewChildren, Component, NgModule } from '@angular/core';
 import { Flip } from 'number-flip';
 import { CommonModule } from '@angular/common';
 
@@ -63,6 +63,13 @@ let ComponentsComponent = class ComponentsComponent {
         this.title = 'vrm';
     }
     ngOnInit() { }
+    ngOnChanges(changes) {
+        if (this.values) {
+            this.values.forEach((value, idx) => {
+                this.content[idx].value = value;
+            });
+        }
+    }
     ngAfterViewInit() {
         this.flipper = new Flip({
             node: this.number.nativeElement,
@@ -94,13 +101,16 @@ let ComponentsComponent = class ComponentsComponent {
         this.renderer.setStyle(this.recruitmentText.nativeElement, 'height', height + 'px');
         this.renderer.setStyle(this.recruitmentText.nativeElement, 'background-color', this.content[this.activeIdx].backgroundColor);
         this.renderer.setStyle(this.arrow.nativeElement, 'fill', this.content[this.activeIdx].backgroundColor);
-        this.cdr.markForCheck();
+        this.cdr.detectChanges();
     }
 };
 ComponentsComponent.ctorParameters = () => [
     { type: Renderer2 },
     { type: ChangeDetectorRef }
 ];
+__decorate([
+    Input()
+], ComponentsComponent.prototype, "values", void 0);
 __decorate([
     ViewChild('ringBg')
 ], ComponentsComponent.prototype, "ringBg", void 0);

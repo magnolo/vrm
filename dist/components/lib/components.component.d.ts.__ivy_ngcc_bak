@@ -1,7 +1,8 @@
-import { AfterViewInit, ChangeDetectorRef, ElementRef, OnInit, QueryList, Renderer2 } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, ElementRef, OnInit, QueryList, Renderer2, SimpleChanges } from '@angular/core';
 export declare class ComponentsComponent implements OnInit, AfterViewInit {
     private renderer;
     private cdr;
+    values: number[];
     content: ({
         title: string;
         value: number;
@@ -30,6 +31,7 @@ export declare class ComponentsComponent implements OnInit, AfterViewInit {
     title: string;
     constructor(renderer: Renderer2, cdr: ChangeDetectorRef);
     ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
     ngAfterViewInit(): void;
     setActive(idx: any): void;
 }
