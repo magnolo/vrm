@@ -67,10 +67,19 @@ var ComponentsComponent = /** @class */ (function () {
     ComponentsComponent.prototype.ngOnInit = function () { };
     ComponentsComponent.prototype.ngOnChanges = function (changes) {
         var _this = this;
+        console.log(changes);
         if (this.values) {
-            this.values.forEach(function (value, idx) {
-                _this.content[idx].value = value;
-            });
+            var values = this.values;
+            if (typeof values === 'string') {
+                values = JSON.parse(values);
+            }
+            if (Array.isArray(values)) {
+                values.forEach(function (value, idx) {
+                    if (value != null && value !== undefined) {
+                        _this.content[idx].value = value;
+                    }
+                });
+            }
         }
     };
     ComponentsComponent.prototype.ngAfterViewInit = function () {

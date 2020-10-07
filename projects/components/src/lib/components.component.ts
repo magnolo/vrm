@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
   OnInit,
   QueryList,
   Renderer2,
@@ -19,7 +20,7 @@ import { Flip } from 'number-flip';
   templateUrl: './components.component.html',
   styleUrls: ['./components.component.scss'],
 })
-export class ComponentsComponent implements OnInit, AfterViewInit {
+export class ComponentsComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() values: number[];
 
   public content = [
@@ -82,10 +83,19 @@ export class ComponentsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
     if (this.values) {
-      this.values.forEach((value, idx) => {
-        this.content[idx].value = value;
-      });
+      let values = this.values;
+      if (typeof values === 'string') {
+        values = JSON.parse(values);
+      }
+      if (Array.isArray(values)) {
+        values.forEach((value, idx) => {
+          if (value != null && value !== undefined) {
+            this.content[idx].value = value;
+          }
+        });
+      }
     }
   }
 

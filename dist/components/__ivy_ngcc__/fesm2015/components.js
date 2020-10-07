@@ -154,10 +154,19 @@ let ComponentsComponent = class ComponentsComponent {
     }
     ngOnInit() { }
     ngOnChanges(changes) {
+        console.log(changes);
         if (this.values) {
-            this.values.forEach((value, idx) => {
-                this.content[idx].value = value;
-            });
+            let values = this.values;
+            if (typeof values === 'string') {
+                values = JSON.parse(values);
+            }
+            if (Array.isArray(values)) {
+                values.forEach((value, idx) => {
+                    if (value != null && value !== undefined) {
+                        this.content[idx].value = value;
+                    }
+                });
+            }
         }
     }
     ngAfterViewInit() {
