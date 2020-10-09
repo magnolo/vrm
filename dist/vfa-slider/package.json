@@ -1,6 +1,6 @@
 {
   "name": "vfa-slider",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
     "@angular/core": "^9.1.12",
@@ -10,9 +10,9 @@
     "tslib": "^1.10.0"
   },
   "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.",
+  "author": "Manfred Walder",
+  "license": "MIT",
   "main": "bundles/vfa-slider.umd.js",
-  "author": "",
-  "license": "ISC",
   "module": "fesm5/vfa-slider.js",
   "es2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/vfa-slider.js",
   "es2015": "fesm2015/vfa-slider.js",

@@ -358,7 +358,7 @@ Apache-2.0
 
 
 vfa-slider
-ISC
+MIT
 
 zone.js
 MIT
