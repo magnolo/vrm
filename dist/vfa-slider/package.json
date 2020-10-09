@@ -1,0 +1,25 @@
+{
+  "name": "vfa-slider",
+  "version": "0.0.6",
+  "peerDependencies": {
+    "@angular/common": "^9.1.12",
+    "@angular/core": "^9.1.12",
+    "@pqina/flip": "^1.7.7"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "description": "Fancy slider for vfa",
+  "author": "Manfred Walder",
+  "license": "MIT",
+  "main": "bundles/vfa-slider.umd.js",
+  "module": "fesm5/vfa-slider.js",
+  "es2015": "fesm2015/vfa-slider.js",
+  "esm5": "esm5/vfa-slider.js",
+  "esm2015": "esm2015/vfa-slider.js",
+  "fesm5": "fesm5/vfa-slider.js",
+  "fesm2015": "fesm2015/vfa-slider.js",
+  "typings": "vfa-slider.d.ts",
+  "metadata": "vfa-slider.metadata.json",
+  "sideEffects": false
+}
