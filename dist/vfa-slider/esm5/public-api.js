@@ -1,7 +1,0 @@
-/*
- * Public API Surface of components
- */
-export * from './lib/vfa-slider.service';
-export * from './lib/vfa-slider.component';
-export * from './lib/vfa-slider.module';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL3ZmYS1zbGlkZXIvIiwic291cmNlcyI6WyJwdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYywwQkFBMEIsQ0FBQztBQUN6QyxjQUFjLDRCQUE0QixDQUFDO0FBQzNDLGNBQWMseUJBQXlCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIGNvbXBvbmVudHNcbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL2xpYi92ZmEtc2xpZGVyLnNlcnZpY2UnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvdmZhLXNsaWRlci5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvdmZhLXNsaWRlci5tb2R1bGUnO1xuIl19
