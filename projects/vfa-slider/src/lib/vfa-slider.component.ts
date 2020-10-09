@@ -29,13 +29,15 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     {
       title: 'Design, Tierstudien',
       value: 152,
-      text: 'Was vom Virus und welche Zusatzstoffe sollen enthalten sein? Erprobung auf Verträglichkeit und Wirksamkeit.'
+      text: 'Was vom Virus und welche Zusatzstoffe sollen enthalten sein? Erprobung auf Verträglichkeit und Wirksamkeit.',
+      backgroundColor: '#0F6292',
     },
     {
       title: 'Erprobung in vergleichenden Studien mit Freiwilligen',
       header: 'Phase I',
       value: 16,
-      list: ['ca. 10-30 Freiwillige', 'Zur prüfen: Verträglichkeit']
+      list: ['ca. 10-30 Freiwillige', 'Zur prüfen: Verträglichkeit'],
+      backgroundColor: '#1682C3',
     },
     {
       title: 'Erprobung in vergleichenden Studien mit Freiwilligen',
@@ -44,7 +46,8 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
       list: [
         'ca. 50-500 Freiwillige',
         'Zur prüfen: Dosierung, Immunantwort vor Ansteckung',
-      ]
+      ],
+      backgroundColor: '#1682C3',
     },
     {
       title: 'Erprobung in vergleichenden Studien mit Freiwilligen',
@@ -53,12 +56,14 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
       list: [
         'ca. 1.000-60.000 Freiwillige',
         'Zur prüfen: Zuverlässigkeit des Schutzes',
-      ]
+      ],
+      backgroundColor: '#1682C3',
     },
     {
       title: 'Zulassungsverfahren',
       value: 0,
-      text: 'Bei der European Merdicines Agency (EMA) mit Sitz in Amsterdam für Deutschland und alle weiteren EU-Staaten.'
+      text: 'Bei der European Merdicines Agency (EMA) mit Sitz in Amsterdam für Deutschland und alle weiteren EU-Staaten.',
+      backgroundColor: '#48BFFB',
     },
   ];
 
