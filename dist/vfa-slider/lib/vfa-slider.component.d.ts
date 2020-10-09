@@ -27,7 +27,6 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
     ringBg: ElementRef;
     planeWrap: ElementRef;
     recruitmentText: ElementRef;
-    centerWipe: ElementRef;
     number: ElementRef;
     arrow: ElementRef;
     steps: QueryList<ElementRef>;

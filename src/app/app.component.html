@@ -1,1 +1,25 @@
-<vfa-slider></vfa-slider>
+<div style="width: 100%; height: 80vh">
+
+  <vfa-slider [values]="values"></vfa-slider>
+</div>
+
+<input
+  [(ngModel)]="values[0]"
+  (ngModelChange)="setChange()"
+  type="number">
+<input
+  [(ngModel)]="values[1]"
+  (ngModelChange)="setChange()"
+  type="number">
+<input
+  [(ngModel)]="values[2]"
+  (ngModelChange)="setChange()"
+  type="number">
+<input
+  [(ngModel)]="values[3]"
+  (ngModelChange)="setChange()"
+  type="number">
+<input
+  [(ngModel)]="values[4]"
+  (ngModelChange)="setChange()"
+  type="number">

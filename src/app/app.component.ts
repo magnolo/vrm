@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'vrm';
+
+  constructor(private cdr: ChangeDetectorRef){}
+  public values = [120, 88, 12, 3, 0];
+
+  setChange(){
+    this.values = [...this.values];
+  }
+
 }

@@ -21,7 +21,6 @@ import Tick from '@pqina/flip';
   selector: 'vfa-slider',
   templateUrl: './vfa-slider.component.html',
   styleUrls: ['./vfa-slider.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() values: number[];
@@ -76,18 +75,20 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild('ringBg') ringBg: ElementRef;
   @ViewChild('planeWrap') planeWrap: ElementRef;
   @ViewChild('recruitmentText') recruitmentText: ElementRef;
-  @ViewChild('centerWipe') centerWipe: ElementRef;
   @ViewChild('number') number: ElementRef;
   @ViewChild('arrow') arrow: ElementRef;
   @ViewChildren('steps') steps: QueryList<ElementRef>;
   title = 'vrm';
 
-  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private sanitize: DomSanitizer) {}
+  constructor(
+    private renderer: Renderer2,
+    private cdr: ChangeDetectorRef,
+    private sanitize: DomSanitizer
+  ) {}
 
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (this.values) {
       let values = this.values;
       if (typeof values === 'string') {
@@ -100,15 +101,13 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
           }
         });
       }
+      if (changes.values && !changes.values.isFirstChange()) {
+        this.setActive(this.activeIdx);
+      }
     }
   }
 
   ngAfterViewInit(): void {
-    // this.flipper = new Flip({
-    //   node: this.number.nativeElement,
-    //   from: this.content[0].value,
-    //   delay: 1, // second
-    // });
     this.flipper = Tick.DOM.create(this.number.nativeElement, {
       value: this.content[0].value,
     });
@@ -157,9 +156,7 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
       length - (length / this.content.length) * this.activeIdx
     );
 
-    console.log(this.flipper);
     this.flipper.value = this.content[this.activeIdx].value;
-    // this.flipper.flipTo({ to: this.content[this.activeIdx].value });
 
     // const height = this.steps.toArray()[this.activeIdx].nativeElement
     //   .scrollHeight;
@@ -184,7 +181,8 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   transform(idx) {
-    return  this.sanitize.bypassSecurityTrustStyle('translateY(-50%) rotate(' + (360 / this.content.length) * idx + 'deg)');
-    
+    return this.sanitize.bypassSecurityTrustStyle(
+      'translateY(-50%) rotate(' + (360 / this.content.length) * idx + 'deg)'
+    );
   }
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { VfaSliderModule } from 'projects/vfa-slider/src/public-api';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { VfaSliderModule } from 'projects/vfa-slider/src/public-api';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     VfaSliderModule,
   ],
   providers: [],
