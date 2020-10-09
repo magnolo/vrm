@@ -4089,11 +4089,6 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
-gelerator@^2.1.2:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/gelerator/-/gelerator-2.2.6.tgz#f47b1a85f699c8b7cbc4f4611bbf6851e1f529c0"
-  integrity sha512-TsXWerEYsvGqsqpRy3u+GHDAqIkwj16lEIxuXRde7v8jG1JuAb3aoqR3um9Zq3uLeR0CmowORBB2VVaKxrxuyg==
-
 genfun@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/genfun/-/genfun-5.0.0.tgz#9dd9710a06900a5c4a5bf57aca5da4e52fe76537"
@@ -6311,13 +6306,6 @@ num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
-
-number-flip@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/number-flip/-/number-flip-1.1.8.tgz#2c624176f47abddd53311e2437dd6bd12c50406d"
-  integrity sha512-dQZ5960pAcDA56RHOY62ogA7RmHZkeJw8FKreSCPFJzgR6J0KX/f9rH/9OrqR4DgklggoZlkA1O13bWOiyqgdA==
-  dependencies:
-    gelerator "^2.1.2"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
