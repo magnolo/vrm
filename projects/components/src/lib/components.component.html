@@ -1,109 +1,115 @@
-<section class="recruitment-process">
-    <div class="grid"></div>
-    <div class="grid">
-  
-      <div class="recruitment-wrap">
-        <div class="plane">
-          <div
-            #planeWrap
-            [class.reverse]="lastIdx > activeIdx"
-            class="plane-wrap">
-            <svg
-             
-              id="arrow"
-              width="60"
-              height="60"
-              viewBox="0 0 60 60"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path  #arrow d="M-2.62268e-06 60L60 30L0 -2.62268e-06L7 30L-2.62268e-06 60Z"></path>
-            </svg>
-  
-          </div>
-        </div>
-  
-        <div class="center">
-          <div
-            #centerWipe
-            class="center-wipe"></div>
-          <div class="center-imgs">
-            <!-- *ngFor="let item of content; let idx = index" -->
-            <div class="center-img">
-              <div #number></div>
-              <div class="hint">Anzahl Studien</div>
-            </div>
-          </div>
-        </div>
-        <div class="ring">
-          <svg>
-            <circle
-              #ringBg
-              class="ring-bg animate"
-              cx="50%"
-              cy="50%"
-              r="200"></circle>
-            <circle
-              class="dash"
-              cx="50%"
-              cy="50%"
-              r="200"></circle>
+<section
+  class="recruitment-process"
+  #section>
+  <div class="grid"></div>
+  <div class="grid">
+
+    <div class="recruitment-wrap">
+      <div class="plane">
+        <div
+          #planeWrap
+          class="plane-wrap">
+          <svg
+            id="arrow"
+            width="60"
+            height="60"
+            viewBox="0 0 60 60"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              #arrow
+              d="M-2.62268e-06 60L60 30L0 -2.62268e-06L7 30L-2.62268e-06 60Z"></path>
           </svg>
-        </div>
-        <div class="point-wrap">
-          <!-- transform: rotate(#{(-360 / 5) * $i}deg), -->
-          <div
-            class="point"
-            (click)="setActive(idx)"
-            [class.active]="idx === activeIdx"
-            [style.transform]="'translateY(-50%) rotate(' +((360 / 5) * (idx)) + 'deg)'"
-            *ngFor="let item of content; let idx = index">
-            <div
-              class="point-inner"
-              [style.transform]="' rotate('+ ((-360 / 5) * idx) +'deg)'"
-              
-              >
-              <div class="point-transform">
-                <span>{{ idx + 1 }}</span>
-              </div>
-            </div>
-          </div>
-  
+
         </div>
       </div>
-  
-      <div
-        #recruitmentText
-        class="recruitment-text" >
-        <div class="recruitment-copy">
-          <div
-            class="step"
-            #steps
-            [class.active]="idx === activeIdx"
-            *ngFor="let item of content; let idx = index">
-            <h3>{{ item.title }}</h3>
-            <h4 *ngIf="item.header">{{ item.header }}</h4>
-            <p>{{ item.text}}</p>
-            <ul *ngIf="item.list && item.list.length > 0">
-              <li *ngFor="let entry of item.list">{{ entry }}</li>
-            </ul>
+
+      <div class="center">
+        <div
+          #centerWipe
+          class="center-wipe"></div>
+        <div class="center-imgs">
+          <!-- *ngFor="let item of content; let idx = index" -->
+          <div class="center-img">
+            <div #number >
+              <div data-repeat="true" data-transform="arrive(4, 0.01, false, false) -> round ->  pad('000') -> split -> delay(rtl, 10, 20)">
+                <span data-view="flip"></span>
+              </div>
+              
+                
+           
+            </div>
+            <div class="hint">Anzahl Studien</div>
           </div>
         </div>
-        <div class="recruitment-controls">
+      </div>
+      <div class="ring">
+        <svg>
+          <circle
+            #ringBg
+            class="ring-bg animate"
+            cx="50%"
+            cy="50%"
+            r="200"></circle>
+          <circle
+            class="dash"
+            cx="50%"
+            cy="50%"
+            r="200"></circle>
+        </svg>
+      </div>
+      <div class="point-wrap">
+        <!-- transform: rotate(#{(-360 / 5) * $i}deg), -->
+        <div
+          class="point"
+          (click)="setActive(idx)"
+          [class.active]="idx === activeIdx"
+          [style.transform]="'translateY(-50%) rotate(' +((360 / 5) * (idx)) + 'deg)'"
+          *ngFor="let item of content; let idx = index">
           <div
-            class="arrow prev"
-            (click)="activeIdx === 0 ? setActive(content.length - 1) :setActive(activeIdx -1)"></div>
-          <div class="dots">
-            <div
-              class="dot"
-              (click)="setActive(idx)"
-              [class.active]="idx === activeIdx"
-              *ngFor="let item of content; let idx  = index"></div>
+            class="point-inner"
+            [style.transform]="' rotate('+ ((-360 / 5) * idx) +'deg)'">
+            <div class="point-transform">
+              <span>{{ idx + 1 }}</span>
+            </div>
           </div>
-          <div
-            class="arrow next"
-            (click)="activeIdx + 1 > content.length - 1 ? setActive(0) : setActive(activeIdx+1)"></div>
         </div>
+
       </div>
     </div>
-  </section>
-  
+
+    <div
+      #recruitmentText
+      class="recruitment-text">
+      <div class="recruitment-copy">
+        <div
+          class="step"
+          #steps
+          [class.active]="idx === activeIdx"
+          *ngFor="let item of content; let idx = index">
+          <h3>{{ item.title }}</h3>
+          <h4 *ngIf="item.header">{{ item.header }}</h4>
+          <p>{{ item.text}}</p>
+          <ul *ngIf="item.list && item.list.length > 0">
+            <li *ngFor="let entry of item.list">{{ entry }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="recruitment-controls">
+        <div
+          class="arrow prev"
+          (click)="activeIdx === 0 ? setActive(content.length - 1) :setActive(activeIdx -1)"></div>
+        <div class="dots">
+          <div
+            class="dot"
+            (click)="setActive(idx)"
+            [class.active]="idx === activeIdx"
+            *ngFor="let item of content; let idx  = index"></div>
+        </div>
+        <div
+          class="arrow next"
+          (click)="activeIdx + 1 > content.length - 1 ? setActive(0) : setActive(activeIdx+1)"></div>
+      </div>
+    </div>
+  </div>
+</section>

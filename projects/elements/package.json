@@ -1,8 +1,8 @@
 {
-  "name": "elements",
+  "name": "vfa-slider",
   "version": "1.0.0",
   "description": "",
-  "files": ["elements.js", "styles.css"],
+  "files": ["elements.js"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

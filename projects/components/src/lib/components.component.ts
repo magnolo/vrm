@@ -11,14 +11,16 @@ import {
   SimpleChanges,
   ViewChild,
   ViewChildren,
+  ViewEncapsulation,
 } from '@angular/core';
 
-import { Flip } from 'number-flip';
+import Tick from '@pqina/flip';
 
 @Component({
-  selector: 'vrm-slider',
+  selector: 'vfa-slider',
   templateUrl: './components.component.html',
   styleUrls: ['./components.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ComponentsComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() values: number[];
@@ -69,6 +71,7 @@ export class ComponentsComponent implements OnInit, AfterViewInit, OnChanges {
   public lastIdx = 0;
   private flipper;
 
+  @ViewChild('section') section: ElementRef;
   @ViewChild('ringBg') ringBg: ElementRef;
   @ViewChild('planeWrap') planeWrap: ElementRef;
   @ViewChild('recruitmentText') recruitmentText: ElementRef;
@@ -100,11 +103,15 @@ export class ComponentsComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit(): void {
-    this.flipper = new Flip({
-      node: this.number.nativeElement,
-      from: this.content[0].value,
-      delay: 1, // second
+    // this.flipper = new Flip({
+    //   node: this.number.nativeElement,
+    //   from: this.content[0].value,
+    //   delay: 1, // second
+    // });
+    this.flipper = Tick.DOM.create(this.number.nativeElement, {
+      value: this.content[0].value
     });
+
     this.setActive(0);
   }
 
@@ -149,24 +156,26 @@ export class ComponentsComponent implements OnInit, AfterViewInit, OnChanges {
       length - (length / this.content.length) * this.activeIdx
     );
 
-    this.flipper.flipTo({ to: this.content[this.activeIdx].value });
+    console.log(this.flipper);
+    this.flipper.value = this.content[this.activeIdx].value;
+    // this.flipper.flipTo({ to: this.content[this.activeIdx].value });
 
-    const height = this.steps.toArray()[this.activeIdx].nativeElement
-      .scrollHeight;
+    // const height = this.steps.toArray()[this.activeIdx].nativeElement
+    //   .scrollHeight;
 
-    this.renderer.setStyle(
-      this.recruitmentText.nativeElement,
-      'height',
-      height + 'px'
-    );
+    // this.renderer.setStyle(
+    //   this.recruitmentText.nativeElement,
+    //   'height',
+    //   height + 'px'
+    // );
     this.renderer.setStyle(
       this.recruitmentText.nativeElement,
       'background-color',
       this.content[this.activeIdx].backgroundColor
     );
     this.renderer.setStyle(
-      this.arrow.nativeElement,
-      'fill',
+      this.section.nativeElement,
+      'background-color',
       this.content[this.activeIdx].backgroundColor
     );
 
