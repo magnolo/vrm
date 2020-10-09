@@ -6,7 +6,8 @@ import { VfaSliderComponent, VfaSliderModule } from 'vfa-slider';
 @NgModule({
   imports: [BrowserModule, VfaSliderModule],
   providers: [],
-  exports: [VfaSliderModule]
+  exports: [VfaSliderModule],
+  entryComponents: [VfaSliderComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {}
