@@ -128,33 +128,36 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     const animationDuration = 1000 + 300 * difference;
-    const plane = this.planeWrap.nativeElement;
+    const plane: SVGGeometryElement = this.planeWrap.nativeElement;
     const path = this.ringBg.nativeElement;
-    const length = path.getTotalLength();
+    const length = path.scrollHeight > 0 && path.getTotalLength ? path.getTotalLength() : 0;
 
-    this.renderer.setStyle(
-      plane,
-      'transition',
-      animationDuration + 'ms all cubic-bezier(0.645, 0.045, 0.355, 1)'
-    );
-    this.renderer.setStyle(
-      plane,
-      'transform',
-      'translateY(-50%) rotate(' + rotation + 'deg)'
-    );
+    if (plane) {
+      this.renderer.setStyle(
+        plane,
+        'transition',
+        animationDuration + 'ms all cubic-bezier(0.645, 0.045, 0.355, 1)'
+      );
+      this.renderer.setStyle(
+        plane,
+        'transform',
+        'translateY(-50%) rotate(' + rotation + 'deg)'
+      );
+    }
+    if (path) {
+      this.renderer.setStyle(
+        path,
+        'transition',
+        animationDuration + 'ms all cubic-bezier(0.645, 0.045, 0.355, 1)'
+      );
+      this.renderer.setStyle(path, 'stroke-dasharray', length);
 
-    this.renderer.setStyle(
-      path,
-      'transition',
-      animationDuration + 'ms all cubic-bezier(0.645, 0.045, 0.355, 1)'
-    );
-    this.renderer.setStyle(path, 'stroke-dasharray', length);
-
-    this.renderer.setStyle(
-      path,
-      'stroke-dashoffset',
-      length - (length / this.content.length) * this.activeIdx
-    );
+      this.renderer.setStyle(
+        path,
+        'stroke-dashoffset',
+        length - (length / this.content.length) * this.activeIdx
+      );
+    }
 
     this.flipper.value = this.content[this.activeIdx].value;
 
@@ -166,11 +169,11 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     //   'height',
     //   height + 'px'
     // );
-    this.renderer.setStyle(
-      this.recruitmentText.nativeElement,
-      'background-color',
-      this.content[this.activeIdx].backgroundColor
-    );
+    // this.renderer.setStyle(
+    //   this.recruitmentText.nativeElement,
+    //   'background-color',
+    //   this.content[this.activeIdx].backgroundColor
+    // );
     this.renderer.setStyle(
       this.section.nativeElement,
       'background-color',
