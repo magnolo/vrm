@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { ComponentsComponent, VfaSliderModule } from 'components';
+import { VfaSliderComponent, VfaSliderModule } from 'vfa-slider';
 
 @NgModule({
   imports: [BrowserModule, VfaSliderModule],
@@ -12,7 +12,7 @@ export class AppModule {
   constructor(private injector: Injector) {}
 
   ngDoBootstrap() {
-    const element = createCustomElement(ComponentsComponent, {
+    const element = createCustomElement(VfaSliderComponent, {
       injector: this.injector,
     });
     customElements.define('vrm-slider', element);

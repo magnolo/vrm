@@ -16,9 +16,9 @@
       "dom"
     ],
     "paths": {
-      "components": [
-        "dist/components/components",
-        "dist/components"
+      "vfa-slider": [
+        "dist/vfa-slider/vfa-slider",
+        "dist/vfa-slider"
       ]
     }
   },
