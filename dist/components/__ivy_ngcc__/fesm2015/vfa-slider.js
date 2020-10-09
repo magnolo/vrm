@@ -332,10 +332,10 @@ __decorate([
     ViewChildren('steps')
 ], ComponentsComponent.prototype, "steps", void 0);
 
-let ComponentsModule = class ComponentsModule {
+let VfaSliderModule = class VfaSliderModule {
 };
-ComponentsModule.ɵmod = ɵngcc0.ɵɵdefineNgModule({ type: ComponentsModule });
-ComponentsModule.ɵinj = ɵngcc0.ɵɵdefineInjector({ factory: function ComponentsModule_Factory(t) { return new (t || ComponentsModule)(); }, imports: [[
+VfaSliderModule.ɵmod = ɵngcc0.ɵɵdefineNgModule({ type: VfaSliderModule });
+VfaSliderModule.ɵinj = ɵngcc0.ɵɵdefineInjector({ factory: function VfaSliderModule_Factory(t) { return new (t || VfaSliderModule)(); }, imports: [[
             CommonModule
         ]] });
 /*@__PURE__*/ (function () { ɵngcc0.ɵsetClassMetadata(ComponentsService, [{
@@ -379,8 +379,8 @@ ComponentsModule.ɵinj = ɵngcc0.ɵɵdefineInjector({ factory: function Componen
             type: ViewChildren,
             args: ['steps']
         }] }); })();
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵngcc0.ɵɵsetNgModuleScope(ComponentsModule, { declarations: function () { return [ComponentsComponent]; }, imports: function () { return [CommonModule]; }, exports: function () { return [ComponentsComponent]; } }); })();
-/*@__PURE__*/ (function () { ɵngcc0.ɵsetClassMetadata(ComponentsModule, [{
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵngcc0.ɵɵsetNgModuleScope(VfaSliderModule, { declarations: function () { return [ComponentsComponent]; }, imports: function () { return [CommonModule]; }, exports: function () { return [ComponentsComponent]; } }); })();
+/*@__PURE__*/ (function () { ɵngcc0.ɵsetClassMetadata(VfaSliderModule, [{
         type: NgModule,
         args: [{
                 declarations: [ComponentsComponent],
@@ -399,6 +399,6 @@ ComponentsModule.ɵinj = ɵngcc0.ɵɵdefineInjector({ factory: function Componen
  * Generated bundle index. Do not edit.
  */
 
-export { ComponentsComponent, ComponentsModule, ComponentsService };
+export { ComponentsComponent, ComponentsService, VfaSliderModule };
 
 //# sourceMappingURL=vfa-slider.js.map

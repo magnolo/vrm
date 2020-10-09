@@ -166,10 +166,10 @@ var ComponentsComponent = /** @class */ (function () {
     return ComponentsComponent;
 }());
 
-var ComponentsModule = /** @class */ (function () {
-    function ComponentsModule() {
+var VfaSliderModule = /** @class */ (function () {
+    function VfaSliderModule() {
     }
-    ComponentsModule = __decorate([
+    VfaSliderModule = __decorate([
         NgModule({
             declarations: [ComponentsComponent],
             imports: [
@@ -177,8 +177,8 @@ var ComponentsModule = /** @class */ (function () {
             ],
             exports: [ComponentsComponent]
         })
-    ], ComponentsModule);
-    return ComponentsModule;
+    ], VfaSliderModule);
+    return VfaSliderModule;
 }());
 
 /*
@@ -189,5 +189,5 @@ var ComponentsModule = /** @class */ (function () {
  * Generated bundle index. Do not edit.
  */
 
-export { ComponentsComponent, ComponentsModule, ComponentsService };
+export { ComponentsComponent, ComponentsService, VfaSliderModule };
 //# sourceMappingURL=vfa-slider.js.map

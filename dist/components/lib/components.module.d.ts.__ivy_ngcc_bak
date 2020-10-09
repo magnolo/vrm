@@ -1,2 +1,2 @@
-export declare class ComponentsModule {
+export declare class VfaSliderModule {
 }

@@ -9,4 +9,4 @@ import { ComponentsComponent } from './components.component';
   ],
   exports: [ComponentsComponent]
 })
-export class ComponentsModule { }
+export class VfaSliderModule { }

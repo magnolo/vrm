@@ -162,9 +162,9 @@ ComponentsComponent = __decorate([
     })
 ], ComponentsComponent);
 
-let ComponentsModule = class ComponentsModule {
+let VfaSliderModule = class VfaSliderModule {
 };
-ComponentsModule = __decorate([
+VfaSliderModule = __decorate([
     NgModule({
         declarations: [ComponentsComponent],
         imports: [
@@ -172,7 +172,7 @@ ComponentsModule = __decorate([
         ],
         exports: [ComponentsComponent]
     })
-], ComponentsModule);
+], VfaSliderModule);
 
 /*
  * Public API Surface of components
@@ -182,5 +182,5 @@ ComponentsModule = __decorate([
  * Generated bundle index. Do not edit.
  */
 
-export { ComponentsComponent, ComponentsModule, ComponentsService };
+export { ComponentsComponent, ComponentsService, VfaSliderModule };
 //# sourceMappingURL=vfa-slider.js.map

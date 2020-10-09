@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { ComponentsModule, ComponentsComponent } from 'components';
+import { ComponentsComponent, VfaSliderModule } from 'components';
 
 @NgModule({
-  imports: [BrowserModule, ComponentsModule],
+  imports: [BrowserModule, VfaSliderModule],
   providers: [],
-  exports: [ComponentsModule]
+  exports: [VfaSliderModule]
 })
 export class AppModule {
   constructor(private injector: Injector) {}

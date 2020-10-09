@@ -388,10 +388,10 @@
         return ComponentsComponent;
     }());
 
-    var ComponentsModule = /** @class */ (function () {
-        function ComponentsModule() {
+    var VfaSliderModule = /** @class */ (function () {
+        function VfaSliderModule() {
         }
-        ComponentsModule = __decorate([
+        VfaSliderModule = __decorate([
             core.NgModule({
                 declarations: [ComponentsComponent],
                 imports: [
@@ -399,13 +399,13 @@
                 ],
                 exports: [ComponentsComponent]
             })
-        ], ComponentsModule);
-        return ComponentsModule;
+        ], VfaSliderModule);
+        return VfaSliderModule;
     }());
 
     exports.ComponentsComponent = ComponentsComponent;
-    exports.ComponentsModule = ComponentsModule;
     exports.ComponentsService = ComponentsService;
+    exports.VfaSliderModule = VfaSliderModule;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
