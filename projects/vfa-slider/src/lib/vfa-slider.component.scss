@@ -35,38 +35,74 @@ $text-color: $white;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
 
         .container {
-            width: 980px;
+            width: 100%;
             position: relative;
             margin: 0 auto;
-
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            grid-gap: 50px;
+            max-width: 980px;
+            height: 100%;
+            align-items: center;
             .grid-left {
                 position: relative;
                 width: 400px;
                 float: left;
             }
         }
+        .footer {
+            width: 100%;
+            color: $text-color;
+            padding: 0 60px;
+            text-align: right;
+            .note {
+                margin-top: 5px;
+                opacity: 0.5;
+            }
+            @media only screen and (max-width: 768px) {
+                margin-top: 40px;
+                text-align: center;
+                padding: 0 20px;
+            }
+        }
 
         @media only screen and (max-width: 1260px) {
-            .grid {
+            .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .container {
+                grid-template-columns: 320px 1fr;
+                grid-gap: 40px;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .container {
                 padding: 0 30px;
                 width: 100%;
+                grid-template-columns: 1fr;
             }
         }
 
         @media only screen and (max-width: 578px) {
-            .grid {
+            .container {
                 padding: 0 25px;
+                grid-gap: 0;
             }
         }
     }
 
     .recruitment-text {
-        width: calc(100% - 500px);
+        // width: calc(100% - 500px);
         position: relative;
         float: right;
-       // background-color: $l-blue;
+        // background-color: $l-blue;
         border-radius: 10px;
         overflow: hidden;
         // box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
@@ -76,13 +112,13 @@ $text-color: $white;
         .recruitment-copy {
             width: 100%;
             position: relative;
-            height: 340px;
+            height: 300px;
             .step {
                 width: 100%;
                 position: absolute;
-                top: 0;
+                bottom: 0;
                 left: 0;
-                padding: 60px 70px 120px 70px;
+                padding: 60px 70px 100px 70px;
 
                 > * {
                     visibility: hidden;
@@ -133,12 +169,13 @@ $text-color: $white;
                     font-size: 16px;
                     line-height: 24px;
                 }
+                ul {
+                    margin-bottom: 0px;
+                }
             }
             @media only screen and (max-width: 768px) {
                 height: 250px;
             }
-        
-        
         }
 
         .recruitment-controls {
@@ -209,8 +246,6 @@ $text-color: $white;
         }
 
         @media only screen and (max-width: 1000px) {
-            width: calc(100% - 375px);
-
             .recruitment-copy .step {
                 padding: 30px 30px 70px 30px;
 
@@ -230,7 +265,16 @@ $text-color: $white;
         @media only screen and (max-width: 768px) {
             width: 100%;
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: column;
+            text-align: center;
+            .recruitment-copy .step {
+                padding: 30px 30px 73px 30px;
+                bottom: 50%;
+                transform: translateY(50%);
+            }
+            ul {
+                text-align: left;
+            }
             .recruitment-controls {
                 position: relative;
             }
@@ -506,7 +550,7 @@ $text-color: $white;
         @media only screen and (max-width: 1000px) {
             $newSize: 320;
             width: $newSize * 1px;
-            height: $newSize * 1px;;
+            height: $newSize * 1px;
 
             circle {
                 transform-origin: 50% 50%;
@@ -538,11 +582,12 @@ $text-color: $white;
             left: 50%;
             margin: 0;
             transform: translateX(-50%);
-            height:180px;
+            height: 180px;
             margin-top: 30px;
-            circle, .plane, .point-wrap {
+            circle,
+            .plane,
+            .point-wrap {
                 display: none;
-                
             }
         }
     }

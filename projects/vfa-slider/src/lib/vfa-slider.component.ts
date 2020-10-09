@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -16,6 +17,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import Tick from '@pqina/flip';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin': '*',
+  }),
+};
+
 @Component({
   selector: 'vfa-slider',
   templateUrl: './vfa-slider.component.html',
@@ -23,6 +30,8 @@ import Tick from '@pqina/flip';
 })
 export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() values: number[];
+
+  @Input() date: string = '04.09.2020';
 
   public content = [
     {
@@ -84,10 +93,26 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   constructor(
     private renderer: Renderer2,
     private cdr: ChangeDetectorRef,
-    private sanitize: DomSanitizer
+    private sanitize: DomSanitizer,
+    private httpClient: HttpClient
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.values) {
+      this.getData();
+    }
+  }
+
+  async getData() {
+    const response = await this.httpClient
+      .get<any>('https://vfa.23d.gr/api/values', httpOptions)
+      .toPromise();
+
+    response.values.forEach((value, idx) => (this.content[idx].value = value));
+    this.date = response.date;
+
+    this.setActive(0);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.values) {
@@ -106,14 +131,20 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
         this.setActive(this.activeIdx);
       }
     }
+
+    if (changes.date) {
+      this.cdr.detectChanges();
+    }
   }
 
   ngAfterViewInit(): void {
     this.flipper = Tick.DOM.create(this.number.nativeElement, {
-      value: this.content[0].value,
+      value: 0,
     });
 
-    this.setActive(0);
+    if (this.values) {
+      this.setActive(0);
+    }
   }
 
   setActive(idx) {
@@ -155,11 +186,6 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
         animationDuration + 'ms all cubic-bezier(0.645, 0.045, 0.355, 1)'
       );
       this.renderer.setStyle(path, 'stroke-dasharray', length);
-
-      console.log(
-        length - (length / this.content.length) * this.activeIdx,
-        length
-      );
 
       this.renderer.setStyle(
         path,
