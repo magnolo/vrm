@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ComponentsModule } from 'projects/components/src/public-api';
+import { VfaSliderModule } from 'projects/vfa-slider/src/public-api';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { ComponentsModule } from 'projects/components/src/public-api';
   ],
   imports: [
     BrowserModule,
-    ComponentsModule,
+    VfaSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
