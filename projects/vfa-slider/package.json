@@ -1,15 +1,15 @@
 {
   "name": "vfa-slider",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
-    "@angular/core": "^9.1.12",
-    "@pqina/flip": "^1.7.7"
+    "@angular/core": "^9.1.12"
   },
   "dependencies": {
+    "@pqina/flip": "^1.7.7",
     "tslib": "^1.10.0"
   },
-  "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.",
+  "description": "Fancy slider for vfa",
 
   "author": "Manfred Walder",
   "license": "MIT"
