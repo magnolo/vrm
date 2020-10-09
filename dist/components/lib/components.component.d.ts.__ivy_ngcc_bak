@@ -21,6 +21,7 @@ export declare class ComponentsComponent implements OnInit, AfterViewInit, OnCha
     activeIdx: number;
     lastIdx: number;
     private flipper;
+    section: ElementRef;
     ringBg: ElementRef;
     planeWrap: ElementRef;
     recruitmentText: ElementRef;

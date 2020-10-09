@@ -1,13 +1,19 @@
 {
-  "name": "components",
+  "name": "vfa-slider",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
     "@angular/core": "^9.1.12",
     "@pqina/flip": "^1.7.7"
-
   },
   "dependencies": {
     "tslib": "^1.10.0"
-  }
+  },
+  "description": "This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }

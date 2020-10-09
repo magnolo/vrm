@@ -1,25 +1,25 @@
 {
-  "name": "components",
+  "name": "vfa-slider",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^9.1.12",
     "@angular/core": "^9.1.12",
-    "number-flip": "^1.1.8"
+    "@pqina/flip": "^1.7.7"
   },
   "dependencies": {
     "tslib": "^1.10.0"
   },
-  "main": "bundles/components.umd.js",
-  "module": "fesm5/components.js",
-  "es2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/components.js",
-  "es2015": "fesm2015/components.js",
-  "esm5": "esm5/components.js",
-  "esm2015": "esm2015/components.js",
-  "fesm5": "fesm5/components.js",
-  "fesm2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/components.js",
-  "fesm2015": "fesm2015/components.js",
-  "typings": "components.d.ts",
-  "metadata": "components.metadata.json",
+  "main": "bundles/vfa-slider.umd.js",
+  "module": "fesm5/vfa-slider.js",
+  "es2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/vfa-slider.js",
+  "es2015": "fesm2015/vfa-slider.js",
+  "esm5": "esm5/vfa-slider.js",
+  "esm2015": "esm2015/vfa-slider.js",
+  "fesm5": "fesm5/vfa-slider.js",
+  "fesm2015_ivy_ngcc": "__ivy_ngcc__/fesm2015/vfa-slider.js",
+  "fesm2015": "fesm2015/vfa-slider.js",
+  "typings": "vfa-slider.d.ts",
+  "metadata": "vfa-slider.metadata.json",
   "sideEffects": false,
   "__processed_by_ivy_ngcc__": {
     "es2015": "9.1.12",
