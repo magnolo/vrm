@@ -11,7 +11,6 @@ import {
   SimpleChanges,
   ViewChild,
   ViewChildren,
-  ViewEncapsulation,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -29,7 +28,8 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     {
       title: 'Design, Tierstudien',
       value: 152,
-      text: 'Was vom Virus und welche Zusatzstoffe sollen enthalten sein? Erprobung auf Verträglichkeit und Wirksamkeit.',
+      text:
+        'Was vom Virus und welche Zusatzstoffe sollen enthalten sein? Erprobung auf Verträglichkeit und Wirksamkeit.',
       backgroundColor: '#0F6292',
     },
     {
@@ -62,7 +62,8 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     {
       title: 'Zulassungsverfahren',
       value: 0,
-      text: 'Bei der European Merdicines Agency (EMA) mit Sitz in Amsterdam für Deutschland und alle weiteren EU-Staaten.',
+      text:
+        'Bei der European Merdicines Agency (EMA) mit Sitz in Amsterdam für Deutschland und alle weiteren EU-Staaten.',
       backgroundColor: '#48BFFB',
     },
   ];
@@ -128,9 +129,12 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     }
 
     const animationDuration = 1000 + 300 * difference;
-    const plane: SVGGeometryElement = this.planeWrap.nativeElement;
-    const path = this.ringBg.nativeElement;
-    const length = path.scrollHeight > 0 && path.getTotalLength ? path.getTotalLength() : 0;
+    const plane = this.planeWrap.nativeElement;
+    const path: SVGGeometryElement = this.ringBg.nativeElement;
+    const length =
+      path.getBoundingClientRect().height > 0 && path.getTotalLength
+        ? path.getTotalLength()
+        : 0;
 
     if (plane) {
       this.renderer.setStyle(
@@ -151,6 +155,11 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
         animationDuration + 'ms all cubic-bezier(0.645, 0.045, 0.355, 1)'
       );
       this.renderer.setStyle(path, 'stroke-dasharray', length);
+
+      console.log(
+        length - (length / this.content.length) * this.activeIdx,
+        length
+      );
 
       this.renderer.setStyle(
         path,
