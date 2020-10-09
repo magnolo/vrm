@@ -13,6 +13,7 @@ import {
   ViewChildren,
   ViewEncapsulation,
 } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import Tick from '@pqina/flip';
 
@@ -81,7 +82,7 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChildren('steps') steps: QueryList<ElementRef>;
   title = 'vrm';
 
-  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef, private sanitize: DomSanitizer) {}
 
   ngOnInit(): void {}
 
@@ -109,7 +110,7 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     //   delay: 1, // second
     // });
     this.flipper = Tick.DOM.create(this.number.nativeElement, {
-      value: this.content[0].value
+      value: this.content[0].value,
     });
 
     this.setActive(0);
@@ -180,5 +181,10 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     );
 
     this.cdr.detectChanges();
+  }
+
+  transform(idx) {
+    return  this.sanitize.bypassSecurityTrustStyle('translateY(-50%) rotate(' + (360 / this.content.length) * idx + 'deg)');
+    
   }
 }

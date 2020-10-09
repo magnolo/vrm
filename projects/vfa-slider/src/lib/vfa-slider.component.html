@@ -64,11 +64,11 @@
           class="point"
           (click)="setActive(idx)"
           [class.active]="idx === activeIdx"
-          [style.transform]="'translateY(-50%) rotate(' +((360 / 5) * (idx)) + 'deg)'"
-          *ngFor="let item of content; let idx = index">
+          *ngFor="let item of content; let idx = index"
+          [style.transform]="transform(idx)">
           <div
             class="point-inner"
-            [style.transform]="' rotate('+ ((-360 / 5) * idx) +'deg)'">
+            [style.transform]="'rotate('+ ((-360 / content.length) * idx) +'deg)'">
             <div class="point-transform">
               <span>{{ idx + 1 }}</span>
             </div>
