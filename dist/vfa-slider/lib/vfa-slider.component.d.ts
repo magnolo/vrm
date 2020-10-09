@@ -1,7 +1,9 @@
 import { AfterViewInit, ChangeDetectorRef, ElementRef, OnChanges, OnInit, QueryList, Renderer2, SimpleChanges } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     private renderer;
     private cdr;
+    private sanitize;
     values: number[];
     content: ({
         title: string;
@@ -30,9 +32,10 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
     arrow: ElementRef;
     steps: QueryList<ElementRef>;
     title: string;
-    constructor(renderer: Renderer2, cdr: ChangeDetectorRef);
+    constructor(renderer: Renderer2, cdr: ChangeDetectorRef, sanitize: DomSanitizer);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     ngAfterViewInit(): void;
     setActive(idx: any): void;
+    transform(idx: any): import("@angular/platform-browser").SafeStyle;
 }
