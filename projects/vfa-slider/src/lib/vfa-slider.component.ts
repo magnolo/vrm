@@ -1,9 +1,11 @@
+import { DOCUMENT } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Inject,
   Input,
   OnChanges,
   OnInit,
@@ -41,6 +43,10 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   public activeIdx = 0;
   public lastIdx = 0;
   private flipper;
+  public embedModalActive = false;
+  public copiedSuccess = false;
+
+  public iframeCode = `<iframe src="https://vfa.23degrees.io/embed/index.html" style="border:none;width: 100%; height: 100%; min-height: 520px"></iframe>`;
 
   public svgs = {
     plane: 'M7 30L0 -2.62268e-06L30 15L60 30L30 45L-2.62268e-06 60L7 30Z',
@@ -65,7 +71,8 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     private renderer: Renderer2,
     private cdr: ChangeDetectorRef,
     private sanitize: DomSanitizer,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    @Inject(DOCUMENT) private document: any
   ) {}
 
   ngOnInit(): void {
@@ -288,5 +295,68 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
       x: centerX + radius * Math.cos(angleInRadians),
       y: centerY + radius * Math.sin(angleInRadians),
     };
+  }
+
+  copyToClipboard() {
+    // Create a <textarea> element
+    const element = this.document.createElement(
+      'textarea'
+    ) as HTMLTextAreaElement;
+
+    // Set its value to the string that you want copied
+    element.value = this.iframeCode;
+
+    // Make it readonly to be tamper-proof
+    // element.setAttribute('readonly', '');
+
+    element.readOnly = false;
+    element.contentEditable = 'true';
+
+    element.style.position = 'absolute';
+    element.style.left = '-9001px';
+
+    this.document.body.appendChild(element);
+
+    // Check if there is any content selected previously, mark as false to know no selection existed before
+    const selected =
+      this.document.getSelection().rangeCount > 0
+        ? this.document.getSelection().getRangeAt(0)
+        : false;
+
+    // iOS > 10 fix
+    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+      const range = this.document.createRange();
+      range.selectNodeContents(element);
+
+      const selection = this.document.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      element.focus();
+      element.setSelectionRange(0, element.value.length);
+    } else {
+      element.select();
+    }
+
+    // Copy - only works as a result of a user action (e.g. click events)
+    this.document.execCommand('copy');
+
+    this.document.body.removeChild(element);
+
+    if (selected) {
+      // If a selection existed before copying
+      this.document.getSelection().removeAllRanges(); // Unselect everything on the HTML document
+      this.document.getSelection().addRange(selected); // Restore the original selection
+    }
+    this.copiedSuccess = true;
+    this.cdr.detectChanges();
+  }
+
+  toggleEmbedView(open) {
+    this.embedModalActive = open;
+    if (!this.embedModalActive) {
+      this.copiedSuccess = false;
+    }
+    this.cdr.detectChanges();
   }
 }

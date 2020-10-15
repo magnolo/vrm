@@ -6,6 +6,7 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
     private cdr;
     private sanitize;
     private httpClient;
+    private document;
     values: number[];
     date: string;
     content: ({
@@ -53,6 +54,9 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
     activeIdx: number;
     lastIdx: number;
     private flipper;
+    embedModalActive: boolean;
+    copiedSuccess: boolean;
+    iframeCode: string;
     svgs: {
         plane: string;
         arrow: string;
@@ -68,7 +72,7 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
     arc: ElementRef;
     steps: QueryList<ElementRef>;
     title: string;
-    constructor(renderer: Renderer2, cdr: ChangeDetectorRef, sanitize: DomSanitizer, httpClient: HttpClient);
+    constructor(renderer: Renderer2, cdr: ChangeDetectorRef, sanitize: DomSanitizer, httpClient: HttpClient, document: any);
     ngOnInit(): void;
     getData(): Promise<void>;
     ngOnChanges(changes: SimpleChanges): void;
@@ -81,4 +85,6 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
         x: any;
         y: any;
     };
+    copyToClipboard(): void;
+    toggleEmbedView(open: any): void;
 }
