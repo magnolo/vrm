@@ -16,6 +16,7 @@ import {
 import { DomSanitizer } from '@angular/platform-browser';
 
 import Tick from '@pqina/flip';
+import { ITEMS } from './vfa-slider.constants';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -33,53 +34,17 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() date: string = '04.09.2020';
 
-  public content = [
-    {
-      title: 'Design, Tierstudien',
-      value: 152,
-      text:
-        'Was vom Virus und welche Zusatzstoffe sollen enthalten sein? Erprobung auf Verträglichkeit und Wirksamkeit.',
-      backgroundColor: '#0F6292',
-    },
-    {
-      title: 'Erprobung in vergleichenden Studien mit Freiwilligen',
-      header: 'Phase I',
-      value: 16,
-      list: ['ca. 10-30 Freiwillige', 'Zur prüfen: Verträglichkeit'],
-      backgroundColor: '#1682C3',
-    },
-    {
-      title: 'Erprobung in vergleichenden Studien mit Freiwilligen',
-      header: 'Phase II',
-      value: 10,
-      list: [
-        'ca. 50-500 Freiwillige',
-        'Zur prüfen: Dosierung, Immunantwort vor Ansteckung',
-      ],
-      backgroundColor: '#1682C3',
-    },
-    {
-      title: 'Erprobung in vergleichenden Studien mit Freiwilligen',
-      header: 'Phase III',
-      value: 6,
-      list: [
-        'ca. 1.000-60.000 Freiwillige',
-        'Zur prüfen: Zuverlässigkeit des Schutzes',
-      ],
-      backgroundColor: '#1682C3',
-    },
-    {
-      title: 'Zulassungsverfahren',
-      value: 0,
-      text:
-        'Bei der European Merdicines Agency (EMA) mit Sitz in Amsterdam für Deutschland und alle weiteren EU-Staaten.',
-      backgroundColor: '#48BFFB',
-    },
-  ];
+  public content = ITEMS;
 
   public activeIdx = 0;
   public lastIdx = 0;
   private flipper;
+
+  public svgs = {
+    plane: 'M7 30L0 -2.62268e-06L30 15L60 30L30 45L-2.62268e-06 60L7 30Z',
+    arrow:
+      'M12 21L21.5 30L49 -4.5897e-07L59.5 12.5L20 55L-1.48619e-06 34L12 21Z',
+  };
 
   @ViewChild('section') section: ElementRef;
   @ViewChild('ringBg') ringBg: ElementRef;
@@ -87,6 +52,10 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   @ViewChild('recruitmentText') recruitmentText: ElementRef;
   @ViewChild('number') number: ElementRef;
   @ViewChild('arrow') arrow: ElementRef;
+  @ViewChild('svgArrow') svgArrow: ElementRef;
+  @ViewChild('svgCheck') svgCheck: ElementRef;
+  @ViewChild('arc') arc: ElementRef;
+  // @ViewChild('svgAnimation') svgAnimation: ElementRef;
   @ViewChildren('steps') steps: QueryList<ElementRef>;
   title = 'vrm';
 
@@ -142,6 +111,9 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
       value: 0,
     });
 
+    const arc = this.generateArc(200, 200, 200, 25, 335);
+    console.log(arc);
+    this.renderer.setAttribute(this.arc.nativeElement, 'd', arc);
     if (this.values) {
       this.setActive(0);
     }
@@ -151,7 +123,8 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     this.lastIdx = this.activeIdx;
     this.activeIdx = idx;
 
-    const rotation = (360 / this.content.length) * this.activeIdx;
+    // const rotation = (360 / this.content.length) * this.activeIdx;
+    const rotation = 360 - ((360 / this.content.length) * this.activeIdx + 25);
 
     let difference = this.lastIdx - this.activeIdx;
 
@@ -159,7 +132,7 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
       difference = difference * -1;
     }
 
-    const animationDuration = 1000 + 300 * difference;
+    const animationDuration = 500 + 300 * difference;
     const plane = this.planeWrap.nativeElement;
     const path: SVGGeometryElement = this.ringBg.nativeElement;
     const length =
@@ -167,17 +140,50 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
         ? path.getTotalLength()
         : 0;
 
+    let opacityDelay = 0;
+    if (this.activeIdx === this.content.length - 1) {
+      opacityDelay = 300 * difference;
+    }
+
     if (plane) {
       this.renderer.setStyle(
         plane,
         'transition',
-        animationDuration + 'ms all cubic-bezier(0.645, 0.045, 0.355, 1)'
+        `${animationDuration}ms transform cubic-bezier(0.645, 0.045, 0.355, 1)`
       );
       this.renderer.setStyle(
         plane,
         'transform',
         'translateY(-50%) rotate(' + rotation + 'deg)'
       );
+
+      this.renderer.setStyle(
+        this.svgArrow.nativeElement,
+        'transition',
+        `opacity 500ms ${opacityDelay}ms cubic-bezier(0.645, 0.045, 0.355, 1)`
+      );
+
+      // this.renderer.setStyle(
+      //   this.svgCheck.nativeElement,
+      //   'transition',
+      //   `opacity 500ms ${opacityDelay}ms cubic-bezier(0.645, 0.045, 0.355, 1)`
+      // );
+
+      if (this.activeIdx === this.content.length - 1) {
+        this.renderer.setStyle(this.svgArrow.nativeElement, 'opacity', '0');
+        // this.renderer.setStyle(
+        //   this.svgCheck.nativeElement,
+        //   'opacity',
+        //   '1'
+        // );
+      } else {
+        this.renderer.setStyle(this.svgArrow.nativeElement, 'opacity', '1');
+        // this.renderer.setStyle(
+        //   this.svgCheck.nativeElement,
+        //   'opacity',
+        //   '0'
+        // );
+      }
     }
     if (path) {
       this.renderer.setStyle(
@@ -215,12 +221,59 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
       this.content[this.activeIdx].backgroundColor
     );
 
+    // let svgForm = this.svgs.plane;
+
+    // this.svgAnimation.nativeElement.beginElement();
+    // this.renderer.setAttribute(this.arrow.nativeElement, 'd', svgForm);
     this.cdr.detectChanges();
   }
 
   transform(idx) {
     return this.sanitize.bypassSecurityTrustStyle(
-      'translateY(-50%) rotate(' + (360 / this.content.length) * idx + 'deg)'
+      'translateY(-50%) rotate(' +
+        (360 - ((360 / this.content.length) * idx + 25)) +
+        'deg)'
     );
+  }
+
+  transformInner(idx) {
+    let scale = '';
+    if (idx === this.activeIdx && idx === this.content.length - 1) {
+      scale = ' scale(1.2)';
+    }
+    return this.sanitize.bypassSecurityTrustStyle(
+      'rotate(' + (360 - ((-360 / this.content.length) * idx - 25)) + 'deg)' + scale
+    );
+  }
+
+  generateArc(x, y, radius, startAngle, endAngle) {
+    const start = this.polarToCartesian(x, y, radius, endAngle);
+    const end = this.polarToCartesian(x, y, radius, startAngle);
+
+    const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+
+    const d = [
+      'M',
+      start.x,
+      start.y,
+      'A',
+      radius,
+      radius,
+      0,
+      largeArcFlag,
+      0,
+      end.x,
+      end.y,
+    ].join(' ');
+
+    return d;
+  }
+  polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+    const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
+
+    return {
+      x: centerX + radius * Math.cos(angleInRadians),
+      y: centerY + radius * Math.sin(angleInRadians),
+    };
   }
 }

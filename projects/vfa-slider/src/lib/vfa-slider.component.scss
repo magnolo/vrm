@@ -44,7 +44,7 @@ $text-color: $white;
             display: grid;
             grid-template-columns: 400px 1fr;
             grid-gap: 50px;
-            max-width: 980px;
+            max-width: 1200px;
             height: 100%;
             align-items: center;
             .grid-left {
@@ -112,13 +112,17 @@ $text-color: $white;
         .recruitment-copy {
             width: 100%;
             position: relative;
-            height: 300px;
+            height: 360px;
             .step {
                 width: 100%;
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 padding: 60px 70px 100px 70px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
 
                 > * {
                     visibility: hidden;
@@ -304,7 +308,7 @@ $text-color: $white;
                 transform-origin: 50% (200px + ($plane-size / 2));
                 transform: translateY(-50%) rotate(0deg);
                 transition: 1000ms all cubic-bezier(0.645, 0.045, 0.355, 1);
-
+                position: relative;
                 &.reverse {
                     img,
                     svg {
@@ -330,8 +334,11 @@ $text-color: $white;
                 svg {
                     path {
                         fill: $circle-color;
-                        transition: 1000ms fill cubic-bezier(0.645, 0.045, 0.355, 1);
+                        transition: 1000ms all cubic-bezier(0.645, 0.045, 0.355, 1);
                     }
+                }
+                #check {
+                    opacity: 0;
                 }
             }
         }
@@ -384,6 +391,7 @@ $text-color: $white;
                     font-size: 3em;
                     color: $text-color;
                     flex-direction: column;
+                    padding-top: 1em;
                     .hint {
                         font-size: 17px;
                         // color: $l-blue;
@@ -432,7 +440,8 @@ $text-color: $white;
             display: flex;
             justify-content: center;
             align-items: center;
-            transform: rotate(-90deg);
+            // transform: rotate(-90deg);
+            transform: rotate(-115deg) scaleY(-1);
 
             svg {
                 width: 100%;
@@ -453,6 +462,13 @@ $text-color: $white;
                     &.animate {
                         transition: 1000ms all cubic-bezier(0.645, 0.045, 0.355, 1);
                     }
+                }
+                path {
+                    stroke-width: 3;
+                    fill: none;
+                    stroke: $circle-color;
+                    transform: rotate(-295deg);
+                    transform-origin: center;
 
                     &.dash {
                         opacity: 0.2;
@@ -540,6 +556,38 @@ $text-color: $white;
                         }
                     }
                 }
+
+                &:last-child {
+                    &::before {
+                        content: "";
+                        border-radius: 100px;
+                        width: calc(100% + 20px);
+                        height: calc(100% + 20px);
+                        position: absolute;
+                        box-shadow: 0px 0px 0px 2px #fff;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(0.8);
+                        transition: 450ms all cubic-bezier(0.645, 0.045, 0.355, 1);
+                    }
+                    &.active {
+                        .point-transform {
+                            transform: scale(1);
+
+                            span {
+                                opacity: 1;
+                            }
+                        }
+                        &::before {
+                            transform: translate(-50%, -50%) scale(1);
+                 
+                            opacity: 1;
+                        }
+                    }
+                }
+
+               
             }
         }
 
@@ -556,6 +604,12 @@ $text-color: $white;
                 transform-origin: 50% 50%;
                 $scale: $newSize / 400;
                 transform: scale($scale);
+            }
+
+            .ring svg path.dash {
+                transform-origin: 50% 50%;
+                $scale: $newSize / 400;
+                transform: scale(0.8) rotate(-295deg) translate(-40px, -40px);
             }
 
             .plane .plane-wrap {
@@ -586,7 +640,8 @@ $text-color: $white;
             margin-top: 30px;
             circle,
             .plane,
-            .point-wrap {
+            .point-wrap,
+            svg path.dash {
                 display: none;
             }
         }
