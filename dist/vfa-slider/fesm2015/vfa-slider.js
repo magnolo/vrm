@@ -125,6 +125,7 @@ let VfaSliderComponent = class VfaSliderComponent {
             this.setActive(0);
             setTimeout(() => {
                 this.loaded = true;
+                this.cdr.detectChanges();
             }, 500);
         });
     }
@@ -159,6 +160,7 @@ let VfaSliderComponent = class VfaSliderComponent {
             this.setActive(0);
             setTimeout(() => {
                 this.loaded = true;
+                this.cdr.detectChanges();
             }, 500);
         }
     }

@@ -86,6 +86,7 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
 
     setTimeout(() => {
       this.loaded = true;
+      this.cdr.detectChanges();
     }, 500);
   }
 
@@ -123,6 +124,7 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
       this.setActive(0);
       setTimeout(() => {
         this.loaded = true;
+        this.cdr.detectChanges();
       }, 500);
     }
   }

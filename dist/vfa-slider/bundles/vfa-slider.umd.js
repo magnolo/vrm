@@ -349,6 +349,7 @@
                             this.setActive(0);
                             setTimeout(function () {
                                 _this.loaded = true;
+                                _this.cdr.detectChanges();
                             }, 500);
                             return [2 /*return*/];
                     }
@@ -388,6 +389,7 @@
                 this.setActive(0);
                 setTimeout(function () {
                     _this.loaded = true;
+                    _this.cdr.detectChanges();
                 }, 500);
             }
         };
