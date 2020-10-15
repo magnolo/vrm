@@ -22,16 +22,37 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
         list: string[];
         backgroundColor: string;
         text?: undefined;
+    } | {
+        title: string;
+        header: string;
+        value: number;
+        list: string[];
+        text: string;
+        backgroundColor: string;
+    } | {
+        title: string;
+        value: number;
+        list: string[];
+        backgroundColor: string;
+        text: string;
+        header?: undefined;
     })[];
     activeIdx: number;
     lastIdx: number;
     private flipper;
+    svgs: {
+        plane: string;
+        arrow: string;
+    };
     section: ElementRef;
     ringBg: ElementRef;
     planeWrap: ElementRef;
     recruitmentText: ElementRef;
     number: ElementRef;
     arrow: ElementRef;
+    svgArrow: ElementRef;
+    svgCheck: ElementRef;
+    arc: ElementRef;
     steps: QueryList<ElementRef>;
     title: string;
     constructor(renderer: Renderer2, cdr: ChangeDetectorRef, sanitize: DomSanitizer, httpClient: HttpClient);
@@ -41,4 +62,10 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
     ngAfterViewInit(): void;
     setActive(idx: any): void;
     transform(idx: any): import("@angular/platform-browser").SafeStyle;
+    transformInner(idx: any): import("@angular/platform-browser").SafeStyle;
+    generateArc(x: any, y: any, radius: any, startAngle: any, endAngle: any): string;
+    polarToCartesian(centerX: any, centerY: any, radius: any, angleInDegrees: any): {
+        x: any;
+        y: any;
+    };
 }
