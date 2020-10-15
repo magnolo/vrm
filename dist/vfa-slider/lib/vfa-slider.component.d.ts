@@ -49,6 +49,7 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
         header?: undefined;
         info?: undefined;
     })[];
+    loaded: boolean;
     activeIdx: number;
     lastIdx: number;
     private flipper;
