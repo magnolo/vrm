@@ -569,25 +569,38 @@ $text-color: $white;
                         left: 50%;
                         opacity: 0;
                         transform: translate(-50%, -50%) scale(0.8);
-                        transition: 450ms all cubic-bezier(0.645, 0.045, 0.355, 1);
+                        transition: 600ms all cubic-bezier(0.645, 0.045, 0.355, 1);
+                    }
+                    .point-transform {
+                        svg {
+                            opacity: 0;
+                            transition: 600ms all;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%) rotate(-180deg);
+                        }
                     }
                     &.active {
                         .point-transform {
                             transform: scale(1);
 
                             span {
+                                opacity: 0;
+                                transform: rotate(180deg);
+                            }
+                            svg {
                                 opacity: 1;
+                                transform: translate(-50%, -50%) rotate(0);
                             }
                         }
                         &::before {
                             transform: translate(-50%, -50%) scale(1);
-                 
+
                             opacity: 1;
                         }
                     }
                 }
-
-               
             }
         }
 
