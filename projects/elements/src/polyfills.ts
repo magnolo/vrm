@@ -57,12 +57,12 @@ import 'classlist.js';  // Run `npm install --save classlist.js`.
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
-
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
 import 'document-register-element';
 
+import 'core-js/es/array';
 
 if (!String.prototype.includes) {
     String.prototype.includes = function(search, start) {
