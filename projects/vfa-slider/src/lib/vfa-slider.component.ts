@@ -36,6 +36,8 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
 
   public content = ITEMS;
 
+  public loaded = false;
+
   public activeIdx = 0;
   public lastIdx = 0;
   private flipper;
@@ -81,6 +83,10 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     this.date = response.date;
 
     this.setActive(0);
+
+    setTimeout(() => {
+      this.loaded = true;
+    }, 500);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -112,10 +118,12 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
     });
 
     const arc = this.generateArc(200, 200, 200, 25, 335);
-    console.log(arc);
     this.renderer.setAttribute(this.arc.nativeElement, 'd', arc);
     if (this.values) {
       this.setActive(0);
+      setTimeout(() => {
+        this.loaded = true;
+      }, 500);
     }
   }
 
@@ -242,7 +250,10 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
       scale = ' scale(1.2)';
     }
     return this.sanitize.bypassSecurityTrustStyle(
-      'rotate(' + (360 - ((-360 / this.content.length) * idx - 25)) + 'deg)' + scale
+      'rotate(' +
+        (360 - ((-360 / this.content.length) * idx - 25)) +
+        'deg)' +
+        scale
     );
   }
 

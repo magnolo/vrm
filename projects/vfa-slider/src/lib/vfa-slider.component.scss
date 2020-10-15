@@ -48,10 +48,15 @@ $text-color: $white;
             max-width: 1200px;
             height: 100%;
             align-items: center;
+            opacity: 0;
+            transition: opacity 250ms ease-out;
             .grid-left {
                 position: relative;
                 width: 400px;
                 float: left;
+            }
+            &.loaded{
+                opacity: 1;
             }
         }
         .footer {
