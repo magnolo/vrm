@@ -13,6 +13,7 @@ $text-color: $white;
     display: block;
     width: 100%;
     height: 100%;
+    min-height: 520px;
 
     * {
         box-sizing: border-box;
@@ -63,9 +64,12 @@ $text-color: $white;
                 opacity: 0.5;
             }
             @media only screen and (max-width: 768px) {
-                margin-top: 40px;
+                margin-top: 10px;
                 text-align: center;
                 padding: 0 20px;
+                img {
+                    height: 32px;
+                }
             }
         }
 
@@ -83,6 +87,8 @@ $text-color: $white;
         }
 
         @media only screen and (max-width: 768px) {
+            padding: 10px 0;
+            padding-top: 0;
             .container {
                 padding: 0 30px;
                 width: 100%;
@@ -92,7 +98,7 @@ $text-color: $white;
 
         @media only screen and (max-width: 578px) {
             .container {
-                padding: 0 25px;
+                padding: 0 15px;
                 grid-gap: 0;
             }
         }
@@ -171,9 +177,15 @@ $text-color: $white;
                 .sub-info {
                     position: relative;
                     display: flex;
-                    justify-self: center;
+
                     align-items: center;
                     z-index: 1;
+                    @media only screen and (max-width: 768px) {
+                        justify-content: center;
+                    }
+                    h4 {
+                        margin: 8px 0;
+                    }
                     .info {
                         position: relative;
                         margin-left: 5px;
@@ -211,6 +223,7 @@ $text-color: $white;
 
                             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
                             width: 300px;
+                            text-align: left;
                             p {
                                 font-size: 13px;
                                 line-height: 1.6em;
@@ -258,25 +271,26 @@ $text-color: $white;
                             }
                         }
                         @media only screen and (max-width: 1260px) {
-                            .info-tooltip{
+                            .info-tooltip {
                                 left: initial !important;
                                 right: 50% !important;
                                 top: 50% !important;
                                 transform: translate(50%, -50%) !important;
-                                &::after{
+                                &::after {
                                     display: none;
                                 }
                             }
                         }
                         @media only screen and (max-width: 768px) {
-                           .info-tooltip{
-                               left: 50% !important;
-                               top: 50% !important;
-                               transform: translate(-50%, -50%) !important;
-                               &::after{
-                                   display: none;
-                               }
-                           }
+                            .info-tooltip {
+                                left: 50% !important;
+                                top: 50% !important;
+                                transform: translate(-50%, -50%) !important;
+                                position: fixed;
+                                &::after {
+                                    display: none;
+                                }
+                            }
                         }
                     }
                 }
@@ -292,7 +306,7 @@ $text-color: $white;
                 }
             }
             @media only screen and (max-width: 768px) {
-                height: 250px;
+                height: 280px;
             }
         }
 
@@ -386,7 +400,7 @@ $text-color: $white;
             flex-direction: column;
             text-align: center;
             .recruitment-copy .step {
-                padding: 30px 30px 73px 30px;
+                padding: 10px 10px 20px 10px;
                 bottom: 50%;
                 transform: translateY(50%);
             }
@@ -395,6 +409,13 @@ $text-color: $white;
             }
             .recruitment-controls {
                 position: relative;
+            }
+        }
+        @media only screen and (max-width: 1000px) {
+            .recruitment-copy .step {
+                p {
+                    line-height: 20px;
+                }
             }
         }
     }
@@ -459,8 +480,8 @@ $text-color: $white;
 
         .center {
             position: absolute;
-            height: 60%;
-            width: 60%;
+            height: 100%;
+            width: 100%;
             z-index: 2;
             //border-radius: 50%;
             // box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
@@ -506,6 +527,11 @@ $text-color: $white;
                     color: $text-color;
                     flex-direction: column;
                     padding-top: 1em;
+
+                    @media only screen and (max-width: 360px) {
+                        font-size: 2em;
+                    }
+
                     .hint {
                         font-size: 17px;
                         // color: $l-blue;
@@ -764,13 +790,16 @@ $text-color: $white;
             margin: 0;
             transform: translateX(-50%);
             height: 180px;
-            margin-top: 30px;
+            margin-top: 0px;
             circle,
             .plane,
             .point-wrap,
             svg path.dash {
                 display: none;
             }
+        }
+        @media only screen and (max-width: 320px) {
+            height: 132px;
         }
     }
     ::ng-deep {

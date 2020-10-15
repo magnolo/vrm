@@ -15,6 +15,7 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
         backgroundColor: string;
         header?: undefined;
         list?: undefined;
+        info?: undefined;
     } | {
         title: string;
         header: string;
@@ -22,13 +23,23 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
         list: string[];
         backgroundColor: string;
         text?: undefined;
+        info?: undefined;
     } | {
         title: string;
         header: string;
         value: number;
         list: string[];
         text: string;
+        info: string;
         backgroundColor: string;
+    } | {
+        title: string;
+        header: string;
+        list: string[];
+        value: number;
+        info: string;
+        backgroundColor: string;
+        text?: undefined;
     } | {
         title: string;
         value: number;
@@ -36,6 +47,7 @@ export declare class VfaSliderComponent implements OnInit, AfterViewInit, OnChan
         backgroundColor: string;
         text: string;
         header?: undefined;
+        info?: undefined;
     })[];
     activeIdx: number;
     lastIdx: number;

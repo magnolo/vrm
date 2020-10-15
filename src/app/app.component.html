@@ -1,9 +1,10 @@
-<div style="width: 100%; height: 80vh">
+<div style="width: 100vw; height: 100vh">
 
   <vfa-slider ></vfa-slider>
 </div>
 
-<input
+<div class="edit" style="display: none;">
+  <input
   [(ngModel)]="values[0]"
   (ngModelChange)="setChange()"
   type="number">
@@ -23,3 +24,5 @@
   [(ngModel)]="values[4]"
   (ngModelChange)="setChange()"
   type="number">
+
+</div>
