@@ -123,6 +123,7 @@ $text-color: $white;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                pointer-events: none;
 
                 > * {
                     visibility: hidden;
@@ -136,6 +137,7 @@ $text-color: $white;
                 }
 
                 &.active {
+                    pointer-events: initial;
                     > * {
                         visibility: visible;
                         opacity: 1;
@@ -165,6 +167,118 @@ $text-color: $white;
 
                 h4 {
                     // background-color: $text-color;
+                }
+                .sub-info {
+                    position: relative;
+                    display: flex;
+                    justify-self: center;
+                    align-items: center;
+                    z-index: 1;
+                    .info {
+                        position: relative;
+                        margin-left: 5px;
+                        .info-icon {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 100px;
+                            width: 18px;
+                            height: 18px;
+                            background: $white;
+                            color: $on-circle-color;
+                            cursor: help;
+                        }
+                        .info-tooltip {
+                            /*tooltip */
+
+                            z-index: 1;
+                            opacity: 0;
+
+                            padding: 10px 20px;
+
+                            background: $white;
+                            color: $on-circle-color;
+
+                            position: absolute;
+                            bottom: 100%;
+                            left: 50%;
+
+                            border-radius: 3px;
+
+                            transform: translate(-50%, -20px);
+                            transition: all 0.3s ease-out;
+                            font-size: 12px;
+
+                            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+                            width: 300px;
+                            p {
+                                font-size: 13px;
+                                line-height: 1.6em;
+                            }
+                            /* tooltip  after*/
+                            &::after {
+                                content: " ";
+                                width: 0;
+                                height: 0;
+
+                                border-style: solid;
+                                border-width: 8px 8px 0 8px;
+                                border-color: $white transparent transparent transparent;
+
+                                position: absolute;
+                                left: 50%;
+                                top: 100%;
+                                transform: translateX(-50%);
+                            }
+
+                            &.left {
+                                bottom: initial;
+                                left: 100%;
+                                transform: translate(20px, -50%);
+                                top: 50%;
+                                &::after {
+                                    border-width: 8px 8px 8px 0;
+                                    border-color: transparent #fff transparent transparent;
+                                    position: absolute;
+                                    top: 50%;
+                                    right: 100%;
+                                    transform: translateY(-50%);
+                                    left: initial;
+                                }
+                            }
+                        }
+                        &:hover {
+                            .info-tooltip {
+                                transform: translate(-50%, -10px);
+                                opacity: 1;
+                                transition: 0.3s linear;
+                                &.left {
+                                    transform: translate(10px, -50%);
+                                }
+                            }
+                        }
+                        @media only screen and (max-width: 1260px) {
+                            .info-tooltip{
+                                left: initial !important;
+                                right: 50% !important;
+                                top: 50% !important;
+                                transform: translate(50%, -50%) !important;
+                                &::after{
+                                    display: none;
+                                }
+                            }
+                        }
+                        @media only screen and (max-width: 768px) {
+                           .info-tooltip{
+                               left: 50% !important;
+                               top: 50% !important;
+                               transform: translate(-50%, -50%) !important;
+                               &::after{
+                                   display: none;
+                               }
+                           }
+                        }
+                    }
                 }
 
                 p,

@@ -90,10 +90,18 @@
             [style.transform]="transformInner(idx)">
             <div class="point-transform">
               <span>{{ idx + 1 }}</span>
-              <svg *ngIf="idx === content.length-1" width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z" fill="black"/>
-                </svg>
-                
+              <svg
+                *ngIf="idx === content.length-1"
+                width="15"
+                height="12"
+                viewBox="0 0 15 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M4.99997 8.58597L1.70697 5.29297L0.292969 6.70697L4.99997 11.414L14.707 1.70697L13.293 0.292969L4.99997 8.58597Z"
+                  fill="black"></path>
+              </svg>
+
             </div>
           </div>
         </div>
@@ -112,7 +120,34 @@
           [class.active]="idx === activeIdx"
           *ngFor="let item of content; let idx = index">
           <h3>{{ item.title }}</h3>
-          <h4 *ngIf="item.header">{{ item.header }}</h4>
+          <div
+            class="sub-info"
+            *ngIf="item.header">
+            <h4>{{ item.header }}</h4>
+            <div
+              *ngIf="item.info"
+              class="info">
+              <div class="info-icon">
+                <svg
+                  width="4"
+                  height="8"
+                  viewBox="0 0 4 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M1 0.75C1 0.338 1.338 0 1.75 0H2.25C2.662 0 3 0.338 3 0.75V1.25C3 1.662 2.662 2 2.25 2H1.75C1.55133 1.99921 1.36102 1.91994 1.22054 1.77946C1.08006 1.63898 1.00079 1.44867 1 1.25V0.75Z"
+                    fill="black"></path>
+                  <path
+                    d="M4 8H0V7H1V4H0V3H3V7H4V8Z"
+                    fill="black"></path>
+                </svg>
+              </div>
+              <div class="info-tooltip left">
+                <p [innerHTML]="item.info"></p>
+              </div>
+            </div>
+          </div>
+
           <p>{{ item.text}}</p>
           <ul *ngIf="item.list && item.list.length > 0">
             <li *ngFor="let entry of item.list">{{ entry }}</li>
