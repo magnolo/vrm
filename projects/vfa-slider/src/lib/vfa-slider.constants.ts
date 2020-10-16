@@ -49,7 +49,7 @@ export const ITEMS = [
     list: [
       'ca. 10.000 – 60.000 Freiwillige',
       'Vergleich mit Scheinimpfung (Placebo)',
-      'Zu prüfen: Zuverlässigkeit des Schutzes, Verträglichkeit',
+      'zu prüfen: Zuverlässigkeit des Schutzes, Verträglichkeit',
     ],
     value: 0,
     info: `<b>Rolling Review</b><br />Vorgezogene Prüfung eines Teils der Zulassungsunterlagen: ​ Während die Studien noch
