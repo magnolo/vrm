@@ -222,6 +222,7 @@ $text-color: $white;
                 .note {
                     margin-top: 5px;
                     opacity: 0.5;
+                    font-size: 0.8em;
                 }
             }
 
@@ -237,6 +238,23 @@ $text-color: $white;
 
             @media only screen and (max-width: 340px) {
                 margin-top: 0px;
+                .footer-info {
+                    .note {
+                        margin-top: 5px;
+                        opacity: 0.5;
+                        font-size: 11px
+                    }
+                }
+                .footer-share {
+                    .share-button {
+                        width: 23px;
+                        height: 23px;
+                        svg{
+                            width: 15px;
+                            height: 15px;
+                        }
+                    }
+                }
             }
         }
 
