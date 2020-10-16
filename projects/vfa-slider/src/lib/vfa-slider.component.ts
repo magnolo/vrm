@@ -84,13 +84,19 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   async getData() {
-    const response = await this.httpClient
+    try{
+      const response = await this.httpClient
       .get<any>('https://vfa.23d.gr/api/values', httpOptions)
       .toPromise();
 
     response.values.forEach((value, idx) => (this.content[idx].value = value));
     this.date = response.date;
 
+    }
+    catch(e){
+      console.log(e)
+    }
+   
     this.setActive(0);
 
     setTimeout(() => {
