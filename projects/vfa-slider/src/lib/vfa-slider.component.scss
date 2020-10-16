@@ -272,7 +272,7 @@ $text-color: $white;
         }
 
         @media only screen and (max-width: 768px) {
-            padding: 10px 0;
+            padding: 20px 0;
             padding-top: 0;
             .container {
                 padding: 0 30px;
@@ -283,10 +283,16 @@ $text-color: $white;
         }
 
         @media only screen and (max-width: 578px) {
+  
             .container {
                 padding: 0 15px;
                 // grid-gap: 0;
             }
+        }
+        @media only screen and (max-width: 320px) {
+            padding: 10px 0;
+            padding-top: 0;
+           
         }
     }
 
