@@ -3,7 +3,7 @@ export const ITEMS = [
     title: 'Impfstoff-Design, Tierstudien',
     value: 152,
     text:
-      'Design: Was vom Virus und welche Zusatzstoffe sollen enthalten sein? AnschließendErprobung des Impfstoffs mit Tieren auf Verträglichkeit und Wirksamkeit.',
+      'Design: Was vom Virus und welche Zusatzstoffe sollen enthalten sein? Anschließend Erprobung des Impfstoffs mit Tieren auf Verträglichkeit und Wirksamkeit.',
     backgroundColor: '#0F6292',
   },
   {
@@ -18,27 +18,27 @@ export const ITEMS = [
     backgroundColor: '#1682C3',
   },
   {
-    title: 'Erprobung in vergleichenden Studien mit Freiwilligen',
+    title: 'Erprobung in Studien mit Freiwilligen',
     header: 'Phase II',
     value: 10,
     list: [
       'ca. 50 - 500 Freiwillige',
       'Vergleich von einmaliger und zweimaliger Impfung sowie Scheinimpfung (Placebo)',
-      'Zu prüfen: richtige Dosierung, Immunantwort, Verträglichkeit.',
+      'zu prüfen: richtige Dosierung, Immunantwort, Verträglichkeit.',
     ],
     backgroundColor: '#1682C3',
   },
   {
-    title: 'Erprobung in vergleichenden Studien mit Freiwilligen',
+    title: 'Erprobung in Studien mit Freiwilligen',
     header: 'Phase III ohne Rolling Review',
     value: 6,
     list: [
       'ca. 10.000 - 60.000 Freiwillige',
       'Vergleich mit Scheinimpfung (Placebo)',
-      'Zu prüfen: Zuverlässigkeit des Schutzes, Verträglichkeit',
+      'zu prüfen: Zuverlässigkeit des Schutzes, Verträglichkeit',
     ],
     text: 'Es sind noch keine Zulassungsunterlagen eingereicht.',
-    info: `<b>Vorgezogene Prüfung eines Teils der Zulassungsunterlagen:</b> ​ Während die Studien noch
+    info: `<b>Rolling Review</b><br />Vorgezogene Prüfung eines Teils der Zulassungsunterlagen: ​ Während die Studien noch
     laufen, arbeitet die European Medicines Agency (EMA) schon Zulassungsunterlagen des
     Herstellers zu Tierstudien und Phase I bis II durch.`,
     backgroundColor: '#1682C3',
@@ -52,7 +52,7 @@ export const ITEMS = [
       'Zu prüfen: Zuverlässigkeit des Schutzes, Verträglichkeit',
     ],
     value: 0,
-    info: `<b>Vorgezogene Prüfung eines Teils der Zulassungsunterlagen:</b> ​ Während die Studien noch
+    info: `<b>Rolling Review</b><br />Vorgezogene Prüfung eines Teils der Zulassungsunterlagen: ​ Während die Studien noch
     laufen, arbeitet die European Medicines Agency (EMA) schon Zulassungsunterlagen des
     Herstellers zu Tierstudien und Phase I bis II durch.`,
     backgroundColor: '#1682C3',

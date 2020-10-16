@@ -58,6 +58,9 @@ $text-color: $white;
             background: #e8e8e8;
             border-radius: 3px;
             word-break: break-all;
+            font-family: monospace, sans-serif;
+            font-size: 13px;
+            margin: 0 0 1em 0;
         }
         &.active {
             pointer-events: initial;
@@ -65,7 +68,7 @@ $text-color: $white;
             opacity: 1;
         }
     }
-    .button {
+    .buttoner {
         background: #e8e8e8;
         border-radius: 3px;
         border-radius: 3px;
@@ -111,9 +114,9 @@ $text-color: $white;
             width: 100%;
             position: relative;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 400px 1fr;
-            grid-gap: 50px;
+            display: flex;
+           // grid-template-columns: 400px 1fr;
+            // grid-gap: 50px;
             max-width: 1200px;
             height: 100%;
             align-items: center;
@@ -186,8 +189,8 @@ $text-color: $white;
 
         @media only screen and (max-width: 1000px) {
             .container {
-                grid-template-columns: 320px 1fr;
-                grid-gap: 40px;
+                // grid-template-columns: 320px 1fr;
+                // grid-gap: 40px;
             }
         }
 
@@ -197,14 +200,15 @@ $text-color: $white;
             .container {
                 padding: 0 30px;
                 width: 100%;
-                grid-template-columns: 1fr;
+                //grid-template-columns: 1fr;
+                flex-direction: column;
             }
         }
 
         @media only screen and (max-width: 578px) {
             .container {
                 padding: 0 15px;
-                grid-gap: 0;
+                // grid-gap: 0;
             }
         }
     }
@@ -212,13 +216,14 @@ $text-color: $white;
     .recruitment-text {
         // width: calc(100% - 500px);
         position: relative;
-        float: right;
         // background-color: $l-blue;
         border-radius: 10px;
         overflow: hidden;
         // box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
         transition: 500ms all;
         color: $text-color;
+        display: flex;
+        flex: 1 0 auto;
 
         .recruitment-copy {
             width: 100%;
@@ -529,7 +534,6 @@ $text-color: $white;
         width: 400px;
         height: 400px;
         position: relative;
-        float: left;
         // margin-bottom: 50px;
 
         .plane {
@@ -891,9 +895,8 @@ $text-color: $white;
         }
 
         @media only screen and (max-width: 768px) {
-            left: 50%;
+       
             margin: 0;
-            transform: translateX(-50%);
             height: 180px;
             margin-top: 0px;
             circle,

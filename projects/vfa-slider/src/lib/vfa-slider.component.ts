@@ -14,6 +14,7 @@ import {
   SimpleChanges,
   ViewChild,
   ViewChildren,
+  ViewEncapsulation,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -30,6 +31,7 @@ const httpOptions = {
   selector: 'vfa-slider',
   templateUrl: './vfa-slider.component.html',
   styleUrls: ['./vfa-slider.component.scss'],
+  // encapsulation: ViewEncapsulation.ShadowDom
 })
 export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() values: number[];
