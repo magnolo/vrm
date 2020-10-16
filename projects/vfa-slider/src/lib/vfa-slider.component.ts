@@ -48,7 +48,7 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   public embedModalActive = false;
   public copiedSuccess = false;
 
-  public iframeCode = `<iframe src="https://vfa.23degrees.io/embed/index.html" style="border:none;width: 100%; height: 100%; min-height: 520px"></iframe>`;
+  public iframeCode = `<iframe src="https://vfa.23degrees.io/embed/index.html" style="border:none;width: 100%; height: 100%; min-height: 568px"></iframe>`;
 
   public svgs = {
     plane: 'M7 30L0 -2.62268e-06L30 15L60 30L30 45L-2.62268e-06 60L7 30Z',
@@ -84,19 +84,19 @@ export class VfaSliderComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   async getData() {
-    try{
+    try {
       const response = await this.httpClient
-      .get<any>('https://vfa.23d.gr/api/values', httpOptions)
-      .toPromise();
+        .get<any>('https://vfa.23d.gr/api/values', httpOptions)
+        .toPromise();
 
-    response.values.forEach((value, idx) => (this.content[idx].value = value));
-    this.date = response.date;
+      response.values.forEach(
+        (value, idx) => (this.content[idx].value = value)
+      );
+      this.date = response.date;
+    } catch (e) {
+      console.log(e);
+    }
 
-    }
-    catch(e){
-      console.log(e)
-    }
-   
     this.setActive(0);
 
     setTimeout(() => {

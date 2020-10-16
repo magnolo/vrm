@@ -2,6 +2,16 @@
   class="recruitment-process"
   #section>
   <div
+    class="loader"
+    *ngIf="!loaded">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div
     class="container"
     (click)="embedModalActive ? toggleEmbedView(false): null"
     [class.loaded]="loaded">
@@ -212,7 +222,9 @@
   [class.active]="embedModalActive">
   <div class="iframe-header">
     <h2 style="margin-top: 0px">Embed code</h2>
-    <div class="close" (click)="toggleEmbedView(false)">
+    <div
+      class="close"
+      (click)="toggleEmbedView(false)">
 
       <svg
         width="9"

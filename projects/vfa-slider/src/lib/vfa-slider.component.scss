@@ -13,8 +13,64 @@ $text-color: $white;
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 520px;
+    min-height: 568px;
     font-family: "Open Sans", sans-serif;
+    position: relative;
+    .loader {
+        position: absolute;
+        z-index: 5;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        animation: fadein 500ms 500ms cubic-bezier(0.5, 0, 0.5, 1) forwards;
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    }
+    .lds-ring {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+    .lds-ring div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 8px solid #fff;
+        border-radius: 50%;
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #fff transparent transparent transparent;
+    }
+    .lds-ring div:nth-child(1) {
+        animation-delay: -0.45s;
+    }
+    .lds-ring div:nth-child(2) {
+        animation-delay: -0.3s;
+    }
+    .lds-ring div:nth-child(3) {
+        animation-delay: -0.15s;
+    }
+    @keyframes lds-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 
     * {
         box-sizing: border-box;
@@ -109,13 +165,13 @@ $text-color: $white;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-
+        background: #0f6292;
         .container {
             width: 100%;
             position: relative;
             margin: 0 auto;
             display: flex;
-           // grid-template-columns: 400px 1fr;
+            // grid-template-columns: 400px 1fr;
             // grid-gap: 50px;
             max-width: 1200px;
             height: 100%;
@@ -173,11 +229,15 @@ $text-color: $white;
             @media only screen and (max-width: 768px) {
                 margin-top: 10px;
                 text-align: center;
-                padding: 0 20px;
+                padding: 0 15px;
                 flex-direction: column;
                 img {
                     height: 32px;
                 }
+            }
+
+            @media only screen and (max-width: 340px) {
+                margin-top: 0px;
             }
         }
 
@@ -224,7 +284,7 @@ $text-color: $white;
         color: $text-color;
         display: flex;
         flex: 1 0 auto;
-
+        padding-left: 50px;
         .recruitment-copy {
             width: 100%;
             position: relative;
@@ -495,8 +555,10 @@ $text-color: $white;
                     font-size: 22px;
                     margin-bottom: 16px;
                 }
-                p {
+                p,
+                ul {
                     font-size: 14px;
+                    line-height: 20px;
                 }
             }
 
@@ -509,6 +571,8 @@ $text-color: $white;
             display: flex;
             flex-direction: column;
             text-align: center;
+            justify-content: center;
+            padding-left: 0px;
             .recruitment-copy .step {
                 padding: 10px 10px 20px 10px;
                 bottom: 50%;
@@ -521,11 +585,9 @@ $text-color: $white;
                 position: relative;
             }
         }
-        @media only screen and (max-width: 1000px) {
+        @media only screen and (max-width: 340px) {
             .recruitment-copy .step {
-                p {
-                    line-height: 20px;
-                }
+                padding: 10px 0px 20px 0px;
             }
         }
     }
@@ -602,14 +664,13 @@ $text-color: $white;
             // background: #fff;
             left: 0%;
             top: 0%;
-         
 
             // &:before {
             //     content: "";
             //     width: 100%;
             //     height: 100%;
             //     position: absolute;
-          
+
             //     border-radius: 50%;
             //     z-index: 10;
             // }
@@ -901,7 +962,6 @@ $text-color: $white;
         }
 
         @media only screen and (max-width: 768px) {
-       
             margin: 0;
             height: 180px;
             margin-top: 0px;
