@@ -38,9 +38,7 @@ export const ITEMS = [
       'zu prüfen: Zuverlässigkeit des Schutzes, Verträglichkeit',
     ],
     text: 'Es sind noch keine Zulassungsunterlagen eingereicht.',
-    info: `<b>Rolling Review</b><br />Vorgezogene Prüfung eines Teils der Zulassungsunterlagen: ​ Während die Studien noch
-    laufen, arbeitet die European Medicines Agency (EMA) schon Zulassungsunterlagen des
-    Herstellers zu Tierstudien und Phase I bis II durch.`,
+    info: `<b>Rolling Review</b><br />Vorgezogene Prüfung eines Teils der Zulassungsunterlagen: ​Während die Phase-III-Studie noch läuft, arbeitet die European Medicines Agency (EMA) schon die Ergebnisse der Tierstudien und der Phase-I- und Phase-II-Studien durch.`,
     backgroundColor: '#1682C3',
   },
   {
@@ -52,9 +50,7 @@ export const ITEMS = [
       'zu prüfen: Zuverlässigkeit des Schutzes, Verträglichkeit',
     ],
     value: 0,
-    info: `<b>Rolling Review</b><br />Vorgezogene Prüfung eines Teils der Zulassungsunterlagen: ​ Während die Studien noch
-    laufen, arbeitet die European Medicines Agency (EMA) schon Zulassungsunterlagen des
-    Herstellers zu Tierstudien und Phase I bis II durch.`,
+    info: `<b>Rolling Review</b><br />Vorgezogene Prüfung eines Teils der Zulassungsunterlagen: ​Während die Phase-III-Studie noch läuft, arbeitet die European Medicines Agency (EMA) schon die Ergebnisse der Tierstudien und der Phase-I- und Phase-II-Studien durch.`,
     backgroundColor: '#1682C3',
   },
   {
